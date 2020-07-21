@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 800px) {
+  .app {
+    font-size: 20px;
+    flex-direction: row;
+    /* etc. */
+  }
+}
+
+.allPizzas {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.onePizza {
+  border: 1px solid black;
+  width: 300px;
+  height: 330px;
+  text-align: start;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+.pizzaImage {
+  width: 250px;
+}

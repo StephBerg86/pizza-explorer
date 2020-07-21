@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./styling/App.css";
+import PizzaList from "./components/PizzaList";
+import AddPizzaForm from "./components/addPizzaForm";
+import { useDarkMode } from "./components/PizzaList";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
+  const isDarkmode = useSelector(useDarkMode);
+  const dispatch = useDispatch();
+  const background = isDarkmode
+    ? { backgroundColor: "#ffffff", color: "black" }
+    : { backgroundColor: "#000000", color: "white" };
+
+  const toggleDarkMode = () => {
+    const action = {
+      type: "TOGGLE_DARKMODE",
+    };
+    dispatch(action);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={background}>
+        <button onClick={toggleDarkMode}>Dark mode</button>
+
+        <PizzaList />
+        <AddPizzaForm />
+      </div>
     </div>
   );
 }
